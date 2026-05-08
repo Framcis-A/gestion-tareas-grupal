@@ -1,0 +1,33 @@
+:root {
+
+    --bg-color: #0f172a;
+
+    --text-color: #f8fafc;
+
+    --input-bg: rgba(255,255,255,0.06);
+
+    --glass-bg: rgba(255,255,255,0.08);
+
+    --glass-border: rgba(255,255,255,0.12);
+
+    --shadow:
+        0 8px 32px rgba(0,0,0,0.25);
+
+}
+
+.light-theme {
+
+    --bg-color: #f5f7fb;
+
+    --text-color: #111827;
+
+    --input-bg: rgba(255,255,255,0.8);
+
+    --glass-bg: rgba(255,255,255,0.6);
+
+    --glass-border: rgba(255,255,255,0.4);
+
+    --shadow:
+        0 8px 32px rgba(0,0,0,0.08);
+
+}

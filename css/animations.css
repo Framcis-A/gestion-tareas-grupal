@@ -1,0 +1,110 @@
+button,
+.task-card,
+.dashboard-card,
+.search-box,
+.input-group {
+
+    transition:
+        transform 0.3s ease,
+        background 0.4s ease,
+        color 0.4s ease,
+        border 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+/* BUTTONS */
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+/* DASHBOARD HOVER */
+
+.dashboard-card:hover {
+
+    transform:
+        translateY(-6px)
+        scale(1.01);
+
+    box-shadow:
+        0 0 20px rgba(99,102,241,0.35),
+        0 0 40px rgba(99,102,241,0.15);
+}
+
+/* TASK CARD HOVER */
+
+.task-card:hover {
+
+    transform:
+        translateY(-5px)
+        scale(1.01);
+}
+
+/* THEME BUTTON */
+
+.theme-btn:hover {
+    rotate: 15deg;
+}
+
+/* INPUT FOCUS */
+
+.task-input:focus,
+.search-input:focus,
+.priority-select:focus {
+
+    outline: 2px solid #6366f1;
+}
+
+/* SLIDE UP */
+
+@keyframes slideUp {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(30px)
+            scale(0.95);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+.task-card {
+
+    animation:
+        slideUp 0.5s ease;
+}
+
+.dashboard-card {
+
+    animation:
+        slideUp 0.7s ease;
+}
+
+/* PROGRESS BAR */
+
+@keyframes progressAnimation {
+
+    from {
+        width: 0%;
+    }
+
+}
+
+.progress-fill {
+
+    animation:
+        progressAnimation 2s ease;
+}
