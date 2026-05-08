@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Gestión de Tareas</title>
+  <title>Gestión de Tareas Pro</title>
 
   <link rel="stylesheet" href="./css/styles.css">
 </head>
@@ -14,56 +13,31 @@
 
     <h1>📋 Gestión de Tareas</h1>
 
-    <!-- FORMULARIO -->
+    <!-- FORM -->
     <form id="task-form">
 
-      <input
-        type="text"
-        id="task-input"
-        placeholder="Escribe una tarea..."
-        required
-      >
+      <input type="text" id="task-input" placeholder="Nueva tarea..." />
 
       <select id="priority">
-
-        <option value="Alta">
-          Alta
-        </option>
-
-        <option value="Media">
-          Media
-        </option>
-
-        <option value="Baja">
-          Baja
-        </option>
-
+        <option value="Alta">Alta</option>
+        <option value="Media">Media</option>
+        <option value="Baja">Baja</option>
       </select>
 
-      <button type="submit">
-        Agregar
-      </button>
+      <button>Agregar</button>
 
     </form>
 
-    <!-- FILTROS -->
+    <!-- FILTERS -->
     <div class="filters">
 
-      <button data-filter="all">
-        Todas
-      </button>
-
-      <button data-filter="pending">
-        Pendientes
-      </button>
-
-      <button data-filter="completed">
-        Completadas
-      </button>
+      <button data-filter="all">Todas</button>
+      <button data-filter="pending">Pendientes</button>
+      <button data-filter="completed">Completadas</button>
 
     </div>
 
-    <!-- LISTA -->
+    <!-- LIST -->
     <ul id="task-list"></ul>
 
   </div>

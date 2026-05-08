@@ -1,21 +1,9 @@
-const STORAGE_KEY = "tasks";
+const KEY = "tasks";
 
 export function saveTasks(tasks) {
-
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify(tasks)
-  );
-
+  localStorage.setItem(KEY, JSON.stringify(tasks));
 }
 
 export function getTasks() {
-
-  const data =
-    localStorage.getItem(STORAGE_KEY);
-
-  return data
-    ? JSON.parse(data)
-    : [];
-
+  return JSON.parse(localStorage.getItem(KEY)) || [];
 }
