@@ -1,55 +1,137 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  font-family: Arial;
-  background: #f5f5f5;
+  font-family: "Arial", sans-serif;
+  background: linear-gradient(135deg, #e9f0ff, #f7f7f7);
+  min-height: 100vh;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
 }
 
+/* CONTENEDOR */
 .container {
+  width: 100%;
   max-width: 700px;
-  margin: auto;
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
+/* TITULO */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* FORM */
 form {
   display: flex;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
-input, select, button {
-  padding: 10px;
+input, select {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.3s;
 }
 
+input:focus, select:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 5px rgba(74,144,226,0.3);
+}
+
+/* BOTON */
 button {
+  padding: 12px 15px;
+  border: none;
+  border-radius: 8px;
+  background: #4a90e2;
+  color: white;
   cursor: pointer;
+  transition: 0.3s;
+  font-weight: bold;
 }
 
+button:hover {
+  background: #357bd8;
+  transform: scale(1.05);
+}
+
+/* FILTROS */
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.filters button {
+  background: #f1f1f1;
+  color: #333;
+  font-weight: normal;
+}
+
+.filters button:hover {
+  background: #ddd;
+}
+
+/* LISTA */
 ul {
-  padding: 0;
+  list-style: none;
 }
 
 li {
-  list-style: none;
-  background: white;
-  padding: 12px;
-  margin-bottom: 10px;
+  background: #ffffff;
+  padding: 15px;
+  margin-bottom: 12px;
+  border-radius: 10px;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  border-left: 5px solid transparent;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: 0.3s;
 }
 
+li:hover {
+  transform: translateY(-2px);
+}
+
+/* TEXTO COMPLETADO */
 .done {
   text-decoration: line-through;
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 /* PRIORIDADES */
-.priority-Alta { border-left-color: red; }
-.priority-Media { border-left-color: orange; }
-.priority-Baja { border-left-color: green; }
+.priority-Alta {
+  border-left: 6px solid #ff4d4d;
+}
 
+.priority-Media {
+  border-left: 6px solid #ffa500;
+}
+
+.priority-Baja {
+  border-left: 6px solid #2ecc71;
+}
+
+/* EMPTY STATE */
 .empty {
   text-align: center;
+  padding: 20px;
   opacity: 0.6;
+  font-size: 16px;
 }
