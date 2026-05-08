@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <title>Task Manager UI Preview</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <header class="header">
+
+            <div class="logo">
+                <i class="fa-solid fa-list-check"></i>
+                <h1>Task Manager</h1>
+            </div>
+
+            <button class="theme-btn">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+
+        </header>
+
+        <!-- TASK INPUT SECTION -->
+        <section class="task-input-section">
+
+            <div class="input-group">
+
+                <input type="text" placeholder="Escribe una nueva tarea..."
+                    class="task-input">
+
+                <select class="priority-select">
+                    <option>Alta</option>
+                    <option>Media</option>
+                    <option>Baja</option>
+                </select>
+
+                <button class="add-btn">
+                    <i class="fa-solid fa-plus"></i>
+                    Agregar
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- DASHBOARD -->
+        <section class="dashboard">
+
+            <div class="dashboard-card">
+
+                <div class="card-icon total-icon">
+                    <i class="fa-solid fa-list"></i>
+                </div>
+
+                <div class="card-info">
+                    <h3>Total Tareas</h3>
+                    <p>12</p>
+                </div>
+
+            </div>
+
+            <div class="dashboard-card">
+
+                <div class="card-icon progress-icon">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+
+                <div class="card-info">
+                    <h3>Progreso</h3>
+                    <p>65%</p>
+                </div>
+
+            </div>
+
+            <div class="dashboard-card">
+
+                <div class="card-icon urgent-icon">
+                    <i class="fa-solid fa-fire"></i>
+                </div>
+
+                <div class="card-info">
+                    <h3>Urgentes</h3>
+                    <p>3</p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- FILTERS -->
+        <section class="filters">
+
+            <button class="filter-btn active">
+                Todas
+            </button>
+
+            <button class="filter-btn">
+                Pendientes
+            </button>
+
+            <button class="filter-btn">
+                Completadas
+            </button>
+
+        </section>
+
+        <!-- SEARCH -->
+        <section class="search-section">
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input type="text"
+                    placeholder="Buscar tareas..."
+                    class="search-input">
+
+            </div>
+
+        </section>
+
+        <!-- TASK LIST -->
+        <section class="task-list">
+
+            <!-- TASK CARD -->
+            <div class="task-card high-priority">
+
+                <div class="task-left">
+
+                    <input type="checkbox" class="task-check">
+
+                    <div class="task-content">
+
+                        <h3>Diseñar interfaz principal</h3>
+
+                        <span class="priority high">
+                            Alta
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="task-actions">
+
+                    <button class="edit-btn">
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+
+                    <button class="delete-btn">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- TASK CARD -->
+            <div class="task-card medium-priority completed">
+
+                <div class="task-left">
+
+                    <input type="checkbox"
+                        class="task-check"
+                        checked>
+
+                    <div class="task-content">
+
+                        <h3>Crear dashboard visual</h3>
+
+                        <span class="priority medium">
+                            Media
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="task-actions">
+
+                    <button class="edit-btn">
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+
+                    <button class="delete-btn">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- TASK CARD -->
+            <div class="task-card low-priority">
+
+                <div class="task-left">
+
+                    <input type="checkbox" class="task-check">
+
+                    <div class="task-content">
+
+                        <h3>Optimizar responsive móvil</h3>
+
+                        <span class="priority low">
+                            Baja
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div class="task-actions">
+
+                    <button class="edit-btn">
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+
+                    <button class="delete-btn">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</body>
+
+</html>
