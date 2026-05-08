@@ -1,120 +1,77 @@
-import { createTask } from "./tasks.js";
+import { state } from "./state.js";
 
-import { saveTasks, getTasks } from "./storage.js";
+import { createTask, deleteTask, toggleTask, sortByPriority } from "./tasks.js";
 
-import { renderTasks } from "./ui.js";
+import { saveTasks } from "./storage.js";
 
 import { filterTasks } from "./filters.js";
 
-
-// ESTADO GLOBAL
-let tasks = getTasks();
-
-let currentFilter = "all";
+import { renderTasks } from "./ui.js";
 
 
 // ELEMENTOS
 const form = document.getElementById("task-form");
-
 const input = document.getElementById("task-input");
-
 const priority = document.getElementById("priority");
-
-const filterButtons =
-  document.querySelectorAll("[data-filter]");
+const filters = document.querySelectorAll("[data-filter]");
 
 
-// INICIO
-renderTasks(tasks);
+// INIT
+updateUI();
 
 
-// AGREGAR TAREA
+// CREATE
 form.addEventListener("submit", e => {
-
   e.preventDefault();
 
-  const newTask = createTask(
-    input.value,
-    priority.value
-  );
+  const text = input.value.trim();
+  if (!text) return;
 
-  tasks.push(newTask);
+  state.tasks.push(createTask(text, priority.value));
 
-  saveTasks(tasks);
-
-  updateView();
+  sync();
 
   form.reset();
-
 });
 
 
-// ELIMINAR O COMPLETAR
+// ACTIONS
 document.addEventListener("click", e => {
 
-  // ELIMINAR
-  if (e.target.classList.contains("delete-btn")) {
+  const id = Number(e.target.dataset.id);
 
-    const id = Number(e.target.dataset.id);
-
-    tasks = tasks.filter(task => task.id !== id);
-
-    saveTasks(tasks);
-
-    updateView();
-
+  if (e.target.classList.contains("delete")) {
+    state.tasks = deleteTask(state.tasks, id);
+    sync();
   }
 
-  // TOGGLE
-  if (e.target.classList.contains("toggle-btn")) {
-
-    const id = Number(e.target.dataset.id);
-
-    tasks = tasks.map(task => {
-
-      if (task.id === id) {
-
-        return {
-          ...task,
-          completed: !task.completed
-        };
-
-      }
-
-      return task;
-
-    });
-
-    saveTasks(tasks);
-
-    updateView();
-
+  if (e.target.classList.contains("toggle")) {
+    state.tasks = toggleTask(state.tasks, id);
+    sync();
   }
-
 });
 
 
-// FILTROS
-filterButtons.forEach(button => {
-
-  button.addEventListener("click", () => {
-
-    currentFilter =
-      button.dataset.filter;
-
-    updateView();
-
+// FILTERS
+filters.forEach(btn => {
+  btn.addEventListener("click", () => {
+    state.filter = btn.dataset.filter;
+    updateUI();
   });
-
 });
 
 
-// ACTUALIZAR VISTA
-function updateView() {
+// CORE FUNCTIONS
+function updateUI() {
 
-  const filtered =
-    filterTasks(tasks, currentFilter);
+  const sorted = sortByPriority(state.tasks);
+
+  const filtered = filterTasks(sorted, state.filter);
 
   renderTasks(filtered);
+}
 
+function sync() {
+  saveTasks(state.tasks);
+  updateUI();
 }
