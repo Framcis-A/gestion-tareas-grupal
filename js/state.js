@@ -2,5 +2,7 @@ import { getTasks } from "./storage.js";
 
 export const state = {
   tasks: getTasks(),
-  filter: "all"
+  filter: "all",
+  search: "",
+  dark: false
 };

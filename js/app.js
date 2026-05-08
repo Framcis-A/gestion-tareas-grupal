@@ -1,77 +1,69 @@
 import { state } from "./state.js";
-
-import { createTask, deleteTask, toggleTask, sortByPriority } from "./tasks.js";
-
+import { createTask, deleteTask, toggleTask, sortTasks } from "./tasks.js";
 import { saveTasks } from "./storage.js";
-
 import { filterTasks } from "./filters.js";
-
 import { renderTasks } from "./ui.js";
+import { updateStats } from "./stats.js";
+import { toggleTheme } from "./theme.js";
 
-
-// ELEMENTOS
 const form = document.getElementById("task-form");
 const input = document.getElementById("task-input");
 const priority = document.getElementById("priority");
-const filters = document.querySelectorAll("[data-filter]");
+const search = document.getElementById("search");
 
+document.getElementById("theme-toggle")
+  .addEventListener("click", toggleTheme);
 
-// INIT
-updateUI();
-
-
-// CREATE
 form.addEventListener("submit", e => {
   e.preventDefault();
 
-  const text = input.value.trim();
-  if (!text) return;
+  if (!input.value.trim()) return;
 
-  state.tasks.push(createTask(text, priority.value));
+  state.tasks.push(createTask(input.value, priority.value));
 
   sync();
-
   form.reset();
 });
 
-
-// ACTIONS
 document.addEventListener("click", e => {
 
   const id = Number(e.target.dataset.id);
 
   if (e.target.classList.contains("delete")) {
     state.tasks = deleteTask(state.tasks, id);
-    sync();
   }
 
   if (e.target.classList.contains("toggle")) {
     state.tasks = toggleTask(state.tasks, id);
-    sync();
   }
+
+  sync();
 });
 
-
-// FILTERS
-filters.forEach(btn => {
-  btn.addEventListener("click", () => {
-    state.filter = btn.dataset.filter;
-    updateUI();
-  });
+search.addEventListener("input", e => {
+  state.search = e.target.value.toLowerCase();
+  updateUI();
 });
-
-
-// CORE FUNCTIONS
-function updateUI() {
-
-  const sorted = sortByPriority(state.tasks);
-
-  const filtered = filterTasks(sorted, state.filter);
-
-  renderTasks(filtered);
-}
 
 function sync() {
   saveTasks(state.tasks);
   updateUI();
 }
+
+function updateUI() {
+
+  let tasks = sortTasks(state.tasks);
+
+  tasks = filterTasks(tasks, state.filter);
+
+  if (state.search) {
+    tasks = tasks.filter(t =>
+      t.text.toLowerCase().includes(state.search)
+    );
+  }
+
+  renderTasks(tasks);
+  updateStats(state.tasks);
+}
+
+updateUI();

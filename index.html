@@ -13,11 +13,20 @@
 
     <h1>📋 Gestión de Tareas</h1>
 
+    <!-- DASHBOARD -->
+    <div class="stats">
+      <p>Total: <span id="total">0</span></p>
+      <p>Progreso: <span id="progress">0%</span></p>
+      <p>Urgentes: <span id="urgent">0</span></p>
+    </div>
+
+    <!-- THEME -->
+    <button id="theme-toggle">🌙 Modo</button>
+
     <!-- FORM -->
     <form id="task-form">
-
       <input type="text" id="task-input" placeholder="Nueva tarea..." />
-
+      
       <select id="priority">
         <option value="Alta">Alta</option>
         <option value="Media">Media</option>
@@ -25,16 +34,16 @@
       </select>
 
       <button>Agregar</button>
-
     </form>
+
+    <!-- SEARCH -->
+    <input type="text" id="search" placeholder="Buscar tarea...">
 
     <!-- FILTERS -->
     <div class="filters">
-
       <button data-filter="all">Todas</button>
       <button data-filter="pending">Pendientes</button>
       <button data-filter="completed">Completadas</button>
-
     </div>
 
     <!-- LIST -->

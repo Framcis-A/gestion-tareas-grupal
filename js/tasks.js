@@ -8,19 +8,17 @@ export function createTask(text, priority) {
   };
 }
 
+export function toggleTask(tasks, id) {
+  return tasks.map(t =>
+    t.id === id ? { ...t, completed: !t.completed } : t
+  );
+}
+
 export function deleteTask(tasks, id) {
   return tasks.filter(t => t.id !== id);
 }
 
-export function toggleTask(tasks, id) {
-  return tasks.map(t =>
-    t.id === id
-      ? { ...t, completed: !t.completed }
-      : t
-  );
-}
-
-export function sortByPriority(tasks) {
+export function sortTasks(tasks) {
   const order = { Alta: 1, Media: 2, Baja: 3 };
 
   return [...tasks].sort(

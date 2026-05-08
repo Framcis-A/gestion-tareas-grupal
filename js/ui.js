@@ -5,7 +5,7 @@ export function renderTasks(tasks) {
   list.innerHTML = "";
 
   if (tasks.length === 0) {
-    list.innerHTML = `<p class="empty">No hay tareas</p>`;
+    list.innerHTML = "<p>No hay tareas</p>";
     return;
   }
 
@@ -16,12 +16,9 @@ export function renderTasks(tasks) {
     li.classList.add(`priority-${task.priority}`);
 
     li.innerHTML = `
-      <div>
-        <strong class="${task.completed ? "done" : ""}">
-          ${task.text}
-        </strong>
-        <small>${task.priority} - ${new Date(task.createdAt).toLocaleDateString()}</small>
-      </div>
+      <span class="${task.completed ? "done" : ""}">
+        ${task.text}
+      </span>
 
       <div>
         <button class="toggle" data-id="${task.id}">✔</button>
